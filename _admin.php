@@ -15,7 +15,7 @@ $_menu['Plugins']->addItem('Packager','plugin.php?p=packager','index.php?pf=pack
 		preg_match('/plugin.php\?p=packager(&.*)?$/',$_SERVER['REQUEST_URI']),
 		$core->auth->isSuperAdmin());
 
-if ($core->blog->settings->packager_tab_in_plugins) {
+if ($core->blog->settings->packager->packager_tab_in_plugins) {
 	$core->addBehavior('pluginsToolsTabs',array('packagerBehaviors','displayPluginsPanel'));
 }
 

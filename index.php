@@ -92,11 +92,11 @@ elseif (!empty($_POST['saveconfig'])) {
 <?php if (!empty($msg)) echo '<p class="message">'.$msg.'</p>'; ?>
 
 <div class="multi-part" id="packager_plugins" title="<?php echo __('Pack plugins'); ?>">
-	<?php dcPackager::displayTabContent($core->plugins->getModules(),'plugins'); ?>
+	<?php uiPackager::displayTabContent($core->plugins->getModules(),'plugins'); ?>
 </div>
 
 <div class="multi-part" id="packager_themes" title="<?php echo __('Pack themes'); ?>">
-	<?php dcPackager::displayTabContent($core->themes->getModules(),'themes'); ?>
+	<?php uiPackager::displayTabContent($core->themes->getModules(),'themes'); ?>
 </div>
 
 <div class="multi-part" id="packager_options" title="<?php echo __('Options'); ?>">
