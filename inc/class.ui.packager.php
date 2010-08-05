@@ -3,7 +3,7 @@
 #
 # This file is part of Packager, a plugin for Dotclear 2.
 #
-# Copyright (c) 2006-2009 Pep and contributors
+# Copyright (c) 2006-2010 Pep and contributors
 # Licensed under the GPL version 2.0 license.
 # See LICENSE file or
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -18,8 +18,7 @@ class uiPackager
 		$type  = ($type == 'plugins')?'plugins':'themes';
 		$title = __(ucfirst(substr($type,0,-1)));
 		
-		if (!empty($elements) && is_array($elements)) 
-		{
+		if (!empty($elements) && is_array($elements)) {
 			echo
 			'<form action="plugin.php" method="post">'.
 			'<table class="clear"><tr>'.
@@ -28,8 +27,7 @@ class uiPackager
 			'<th class="nowrap">'.__('Description').'</th>'.
 			'</tr>';
 		
-			foreach ($elements as $k => $v)
-			{	
+			foreach ($elements as $k => $v) {	
 				echo
 				'<tr class="line">'.
 				'<td>'.form::checkbox(array('pack['.html::escapeHTML($k).']'),1).'</td>'.
@@ -53,8 +51,7 @@ class uiPackager
 			$core->formNonce().'</p>'.
 			'</form>';
 		}
-		else
-		{
+		else {
 			echo '<p><strong>'.__('No available '.$type).'</strong></p>';
 		}		
 	}

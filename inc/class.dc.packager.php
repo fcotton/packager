@@ -3,7 +3,7 @@
 #
 # This file is part of Packager, a plugin for Dotclear 2.
 #
-# Copyright (c) 2006-2009 Pep and contributors
+# Copyright (c) 2006-2010 Pep and contributors
 # Licensed under the GPL version 2.0 license.
 # See LICENSE file or
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ class dcPackager
 {
 	protected static function scanDir($archiver,$dirname)
 	{
-		$exclude_list = array('.','..','.svn','CVS','.DS_Store','Thumbs.db');
+		$exclude_list = array('.','..','.svn','.git','.hg','CVS','.DS_Store','Thumbs.db');
 		
 		$dirname = preg_replace('|/$|','',$dirname);		
 		if (!is_dir($dirname)) {
@@ -56,14 +56,14 @@ class dcPackager
 	{
 		global $core;
 		
-		if (!$core->blog->settings->packager_repository) {
+		if (!$core->blog->settings->packager->packager_repository) {
 			$public = $core->blog->public_path;
-		} else {
-			$public = $core->blog->settings->packager_repository;			
+		}
+		else {
+			$public = $core->blog->settings->packager->packager_repository;			
 		}
 
-		try
-		{
+		try {
 			if (empty($module['id'])) {
 				$module['id'] = basename($module['root']);
 			}
@@ -75,8 +75,7 @@ class dcPackager
 			
 			self::quickArchive($target.'.zip',$module['root']);
 		}
-		catch (Exception $e)
-		{
+		catch (Exception $e) {
 			throw new Exception(__('Unable to build package. Error : ').$e->getMessage());
 		}
 	}

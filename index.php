@@ -3,33 +3,18 @@
 #
 # This file is part of Packager, a plugin for Dotclear 2.
 #
-# Copyright (c) 2006-2009 Pep and contributors
+# Copyright (c) 2006-2010 Pep and contributors
 # Licensed under the GPL version 2.0 license.
 # See LICENSE file or
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 #
 # -- END LICENSE BLOCK ------------------------------------
-if (!defined('DC_CONTEXT_ADMIN')) exit;
-
-if (!$core->blog->settings->packager_repository) {
-	try 
-	{
-		// Default settings
-		$core->blog->settings->setNameSpace('packager');
-		$core->blog->settings->put('packager_repository',$core->blog->public_path);
-		$core->blog->settings->put('packager_tab_in_plugins', false, 'boolean');
-		http::redirect($p_url);
-	}
-	catch (Exception $e)
-	{
-		$core->error->add($e->getMessage());
-	}
-}
+if (!defined('DC_CONTEXT_ADMIN')) return;
 
 $default_tab = '';
 
-$repository     = $core->blog->settings->packager_repository;
-$tab_in_plugins = $core->blog->settings->packager_tab_in_plugins;
+$repository     = $core->blog->settings->packager->packager_repository;
+$tab_in_plugins = $core->blog->settings->packager->packager_tab_in_plugins;
 
 if (empty($core->themes)) {
 	$core->themes = new dcModules($core);
@@ -43,8 +28,7 @@ if (!empty($_POST['do_package']) && is_array($_POST['pack'])) {
 		$prefix = substr($type,0,-1).'-';
 		
 		// Build package(s)
-		try
-		{
+		try	{
 			foreach (array_keys($_POST['pack']) as $ext_id) {
 				if (!$core->{$type}->moduleExists($ext_id)) {
 					throw new Exception(__('No such '.substr($type,0,-1).' ('.$ext_id.').'));
@@ -71,31 +55,27 @@ if (!empty($_POST['do_package']) && is_array($_POST['pack'])) {
 				http::redirect($redir);
 			}
 		}
-		catch (Exception $e)
-		{
+		catch (Exception $e) {
 			$core->error->add($e->getMessage());
 		}
 	}
 }
-elseif (!empty($_POST['saveconfig']))
-{
+elseif (!empty($_POST['saveconfig'])) {
 	$repository = trim(html::escapeHTML($_POST['repository']));
 	$tab_in_plugins = (empty($_POST['tab_in_plugins']))?false:true;
 	if (empty($repository) || !is_writeable($repository)) {
 		$repository = $core->blog->public_path;
 	}
 
-	try
-	{
-		$core->blog->settings->setNameSpace('packager');
-		$core->blog->settings->put('packager_repository',$repository);
-		$core->blog->settings->put('packager_tab_in_plugins',$tab_in_plugins,'boolean');
+	try {
+		$core->blog->settings->addNameSpace('packager');
+		$core->blog->settings->packager->put('packager_repository',$repository);
+		$core->blog->settings->packager->put('packager_tab_in_plugins',$tab_in_plugins,'boolean');
 		
 		$default_tab = 'packager_options';
 		$msg = __('Configuration successfully updated.');
 	}
-	catch (Exception $e)
-	{
+	catch (Exception $e) {
 		$core->error->add($e->getMessage());
 	}
 }
@@ -107,7 +87,7 @@ elseif (!empty($_POST['saveconfig']))
 </head>
 
 <body>
-<h2><?php echo html::escapeHTML($core->blog->name); ?> &gt; <?php echo __('Packager'); ?></h2>
+<h2><?php echo html::escapeHTML($core->blog->name); ?> &rsaquo; <?php echo __('Packager'); ?></h2>
 
 <?php if (!empty($msg)) echo '<p class="message">'.$msg.'</p>'; ?>
 
