@@ -1,0 +1,80 @@
+# French translation of DotClear
+# Copyright (C) 2006.
+# Pep <pep@dotclear.net>, 2006.
+#
+
+#: plugins/packager/_admin.php:34 plugins/packager/index.php:128
+msgid "Pack plugins"
+msgstr "Packager des extensions"
+
+#: plugins/packager/class.dc.packager.php:42
+msgid "Unable to build package. Error : "
+msgstr "Impossible de créer le package. Erreur : "
+
+#: plugins/packager/class.dc.packager.php:83
+msgid "Pack selected plugins"
+msgstr "Packager les extensions selectionnées"
+
+#: plugins/packager/class.dc.packager.php:83
+msgid "Pack selected themes"
+msgstr "Packager les thèmes selectionnés"
+
+#: plugins/packager/class.dc.packager.php:88
+msgid "No available plugins"
+msgstr "Aucune extension disponible"
+
+#: plugins/packager/class.dc.packager.php:88
+msgid "No available themes"
+msgstr "Aucun thème disponible"
+
+#: plugins/packager/index.php:62
+msgid "No such plugin"
+msgstr "Aucune extension correspondante"
+
+#: plugins/packager/index.php:62
+msgid "No such theme"
+msgstr "Aucun thème correspondant"
+
+#: plugins/packager/index.php:76
+msgid "Package(s) successfully created."
+msgstr "Package(s) créé(s) avec succès."
+
+#: plugins/packager/index.php:109
+msgid "Configuration successfully updated."
+msgstr "Configuration mise à jour avec succès."
+
+#: plugins/packager/index.php:119 plugins/packager/index.php:124
+msgid "Packager"
+msgstr "Packager"
+
+#: plugins/packager/index.php:132
+msgid "Pack themes"
+msgstr "Packager des thèmes"
+
+#: plugins/packager/index.php:136
+msgid "Options"
+msgstr "Options"
+
+#: plugins/packager/index.php:139
+msgid "General options"
+msgstr "Options générales"
+
+#: plugins/packager/index.php:141
+msgid "Repository path :"
+msgstr "Chemin vers le dépôt :"
+
+#: plugins/packager/index.php:148
+msgid "Also create gzipped tar archives"
+msgstr "Créer également les archives tar gzipées"
+
+#: plugins/packager/index.php:153
+msgid "Advanced options"
+msgstr "Options avancées"
+
+#: plugins/packager/index.php:157
+msgid "Add packager tab in plugins management"
+msgstr "Ajouter l'onglet du packager dans la gestion des extensions"
+
+#: plugins/packager/index.php:162
+msgid "Save configuration"
+msgstr "Enregistrer la configuration"
